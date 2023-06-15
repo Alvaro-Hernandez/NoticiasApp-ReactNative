@@ -5,6 +5,7 @@ import axios from 'axios';
 const NewsList = ({navegation}) => {
   const [news, setNews] = useState([]);
 
+  const {container, newsItem, title, description} = styles;
   useEffect(() => {
     fetchNews();
   }, []);
@@ -24,15 +25,16 @@ const NewsList = ({navegation}) => {
   };
 
   return (
-    <View>
+    <View style={container}>
       <FlatList
         data={news}
         renderItem={({item}) => {
           <TouchableOpacity
+            style={newsItem}
             key={item.id}
             onPress={() => navegation.navigate('NewsDetail', {newsItem: item})}>
-            <Text>{item.title}</Text>
-            <Text>{item.description}</Text>
+            <Text style={title}>{item.title}</Text>
+            <Text style={description}>{item.description}</Text>
           </TouchableOpacity>;
         }}
         keyExtractor={item => item.id?.toString()}
@@ -40,5 +42,29 @@ const NewsList = ({navegation}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#f5f5f5',
+  },
+  newsItem: {
+    backgroundColor: '#fff',
+    padding: 16,
+    marginBottom: 16,
+    borderRadius: 8,
+    elevation: 2,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  description: {
+    fontSize: 14,
+    color: '#666',
+  },
+});
 
 export default NewsList;
