@@ -1,8 +1,8 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import axios from 'axios';
 
-const NewList = ({navegation}) => {
+const NewsList = ({navegation}) => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
@@ -40,3 +40,5 @@ const NewList = ({navegation}) => {
     </View>
   );
 };
+
+export default NewsList;
