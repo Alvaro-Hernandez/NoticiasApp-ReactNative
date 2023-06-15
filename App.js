@@ -9,7 +9,13 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#222',
+          },
+          headerTintColor: '#EDEDED',
+        }}>
         <Stack.Screen
           name="NewsList"
           component={NewsList}
@@ -18,7 +24,7 @@ function App() {
         <Stack.Screen
           name="NewsDetail"
           component={NewsDetail}
-          options={{title: 'Detalles de Noticias'}}
+          options={{title: 'Techcrunch - Details'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
