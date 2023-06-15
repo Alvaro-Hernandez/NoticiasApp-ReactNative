@@ -22,4 +22,21 @@ const NewList = ({navegation}) => {
       console.error(error);
     }
   };
+
+  return (
+    <View>
+      <FlatList
+        data={news}
+        renderItem={({item}) => {
+          <TouchableOpacity
+            key={item.id}
+            onPress={() => navegation.navigate('NewsDetail', {newsItem: item})}>
+            <Text>{item.title}</Text>
+            <Text>{item.description}</Text>
+          </TouchableOpacity>;
+        }}
+        keyExtractor={item => item.id?.toString()}
+      />
+    </View>
+  );
 };
