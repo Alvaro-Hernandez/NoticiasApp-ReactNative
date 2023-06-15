@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import axios from 'axios';
 
-const NewsList = ({navegation}) => {
+const NewsList = ({navigation}) => {
   const [news, setNews] = useState([]);
 
   const {container, title, newsItem, newsTitle, newsDescription} = styles;
@@ -33,7 +33,7 @@ const NewsList = ({navegation}) => {
           <TouchableOpacity
             style={newsItem}
             key={item.id}
-            onPress={() => navegation.navigate('NewsDetail', {newsItem: item})}>
+            onPress={() => navigation.navigate('NewsDetail', {newsItem: item})}>
             <Text style={newsTitle}>{item.title}</Text>
             <Text style={newsDescription}>{item.description}</Text>
           </TouchableOpacity>
